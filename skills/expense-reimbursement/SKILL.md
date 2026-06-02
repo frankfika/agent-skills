@@ -7,6 +7,14 @@ description: Organize reimbursement invoices and receipts. Use when the user ask
 
 Organize receipts as expense groups with paired documents and reports, not as flat long filenames.
 
+## Bundled Resources
+
+- Use `scripts/expense_reimbursement.py init <workspace>` to create a usable folder skeleton and manifest template.
+- Use `scripts/expense_reimbursement.py organize --manifest <csv> --input-root <raw-dir> --output-dir <organized-dir>` after invoice data has been extracted into the manifest.
+- Use `scripts/expense_reimbursement.py validate <organized-dir>` before the final response.
+- Read `references/manifest-schema.md` when you need the exact manifest fields.
+- Copy or adapt `assets/manifest_template.csv` when starting from an empty folder.
+
 ## Required Workflow
 
 1. Scan all supported files recursively: PDF, JPG, JPEG, PNG, WEBP, BMP.

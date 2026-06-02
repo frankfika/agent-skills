@@ -1,0 +1,2 @@
+source_path,category,amount,tax,invoice_number,merchant,buyer,invoice_date,service_date,role,counted,note,group_key
+example.pdf,打车票,36.70,0.00,1234567890,某出行平台,某公司,2026-05-25,2026-05-25,发票,yes,,

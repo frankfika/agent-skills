@@ -28,6 +28,13 @@ prompt: |
 
   ## 必须执行的流程
 
+  可复用脚本：
+
+  - `scripts/expense_reimbursement.py init <workspace>`：创建目录骨架和 manifest 模板。
+  - `scripts/expense_reimbursement.py organize --manifest <csv> --input-root <raw-dir> --output-dir <organized-dir>`：根据 manifest 组织文件并生成报表。
+  - `scripts/expense_reimbursement.py validate <organized-dir>`：校验报表和文件路径。
+  - manifest 字段说明见 `references/manifest-schema.md`。
+
   1. 递归扫描所有支持的文件：
      - PDF
      - JPG/JPEG

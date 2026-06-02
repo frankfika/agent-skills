@@ -124,11 +124,28 @@ python3 skills/x-post-crafter/x_post_card.py \
 - 发票去重：根据发票号码、金额、商户、日期识别重复发票
 - 凭证配对：把发票、订单、行程单放入同一费用组
 - 报表生成：输出 `报销明细.csv`、`报销汇总.md`、`报销统计.xlsx`
+- 可执行脚本：根据 manifest 落盘整理文件、生成报表并校验路径
 
 **Agent 中使用：**
 ```
 帮我整理这个文件夹里的报销发票，分类、去重，并生成报销汇总
 把这些打车票和发票配对整理成报销明细
+```
+
+**命令行使用：**
+
+```bash
+pip install -r skills/expense-reimbursement/requirements.txt
+
+python3 skills/expense-reimbursement/scripts/expense_reimbursement.py init ./expense-demo
+
+# 填写 expense-demo/manifest_template.csv 后执行：
+python3 skills/expense-reimbursement/scripts/expense_reimbursement.py organize \
+  --manifest ./expense-demo/manifest_template.csv \
+  --input-root ./expense-demo \
+  --output-dir ./expense-demo/organized
+
+python3 skills/expense-reimbursement/scripts/expense_reimbursement.py validate ./expense-demo/organized
 ```
 
 ## 🛠️ 技术架构
@@ -172,7 +189,14 @@ agent-skills/
 │   │   └── x_post_card.py # 配图生成脚本
 │   └── expense-reimbursement/ # 报销材料整理技能
 │       ├── SKILL.md       # Codex/Claude 风格技能说明
-│       └── skill.yaml     # 技能配置（中文）
+│       ├── skill.yaml     # 技能配置（中文）
+│       ├── requirements.txt
+│       ├── scripts/
+│       │   └── expense_reimbursement.py
+│       ├── references/
+│       │   └── manifest-schema.md
+│       └── assets/
+│           └── manifest_template.csv
 └── .git/                  # Git 仓库
 ```
 
