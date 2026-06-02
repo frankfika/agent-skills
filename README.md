@@ -83,6 +83,39 @@ python3 skills/watermark/watermark.py -t "机密" -d ./docs --overwrite
 | Word | .docx | python-docx |
 | Excel | .xlsx | openpyxl |
 
+### 2. X Post Crafter - X/Twitter 推文与配图助手
+
+把一句想法整理成更适合 X 信息流传播的推文，并生成清晰的 16:9 对比卡片。
+
+**功能特点：**
+- 推文优化：把口语想法改成短 hook、短段落、强观点
+- 对比表达：适合工具体验、产品差异、观点拆解
+- 配图生成：内置横版信息卡片脚本，避免小字渲染变形
+- 发布检查：发布前检查正文重复、截断、图片预览和按钮状态
+- 链接确认：发布后确认时间线新帖并返回链接
+
+**命令行生成配图：**
+
+```bash
+python3 skills/x-post-crafter/x_post_card.py \
+  --title "Codex vs Claude Code" \
+  --tagline "不是替代，是分工" \
+  --left-title "Codex" \
+  --left "更像桌面级 AI 工程工作台" \
+  --left "读仓库、改文件、跑测试" \
+  --right-title "Claude Code" \
+  --right "更像终端里的代码搭档" \
+  --right "轻快、直接、命令感强" \
+  --footer "以后不是选一个 AI，而是给不同工作流配不同搭档。" \
+  --output ./codex-vs-claude-code.png
+```
+
+**Claude Code 中使用：**
+```
+帮我把这句话改成更利于传播的推文，并配图发到 X
+写一下 Codex 和 Claude Code 的区别，做一张对比图
+```
+
 ## 🛠️ 技术架构
 
 ```mermaid
@@ -92,9 +125,11 @@ graph LR
     C --> D[PyPDF2]
     C --> E[python-docx]
     C --> F[openpyxl]
+    C --> J[Pillow]
     D --> G[PDF Output]
     E --> H[Word Output]
     F --> I[Excel Output]
+    J --> K[Social Card PNG]
 ```
 
 ### 技术栈
@@ -106,6 +141,7 @@ graph LR
   - reportlab - PDF 水印生成
   - python-docx - Word 文档处理
   - openpyxl - Excel 电子表格处理
+  - Pillow - 社交媒体配图生成
 
 ## 📁 目录结构
 
@@ -113,9 +149,12 @@ graph LR
 franks-claude-code-skills/
 ├── README.md              # 项目文档
 ├── skills/                # 技能目录
-│   └── watermark/         # 水印技能
+│   ├── watermark/         # 水印技能
+│   │   ├── skill.yaml     # 技能配置（中文）
+│   │   └── watermark.py   # Python 实现
+│   └── x-post-crafter/    # X/Twitter 推文与配图技能
 │       ├── skill.yaml     # 技能配置（中文）
-│       └── watermark.py   # Python 实现
+│       └── x_post_card.py # 配图生成脚本
 └── .git/                  # Git 仓库
 ```
 
@@ -134,7 +173,7 @@ git clone https://github.com/frankfika/franks-claude-code-skills.git
 ### 安装依赖
 
 ```bash
-pip install PyPDF2 reportlab python-docx openpyxl
+pip install PyPDF2 reportlab python-docx openpyxl Pillow
 ```
 
 ## 🔧 自定义技能
@@ -184,6 +223,8 @@ trigger:
 | 文档保护 | Watermark | 添加"机密"水印 |
 | 批量处理 | Watermark | 目录批量加水印 |
 | 版权声明 | Watermark | 添加版权信息 |
+| 社交发布 | X Post Crafter | 优化推文并配图发布 |
+| 产品对比 | X Post Crafter | 生成工具差异对比图 |
 
 ## 🤝 贡献
 
