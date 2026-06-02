@@ -1,24 +1,22 @@
 <div align="center">
 
-# Frank's Claude Code Skills
-> Claude Code 技能扩展集合 · Claude Code Skills Collection
+# Agent Skills
+> 可复用的 AI Agent 技能、脚本与工作流 · Reusable skills, scripts, and workflows for AI agents
 
-![Claude Code](https://img.shields.io/badge/Claude_Code-Compatible-orange?style=flat-square)
+![AI Agents](https://img.shields.io/badge/AI_Agents-Compatible-111827?style=flat-square)
 ![Python](https://img.shields.io/badge/Python-3.8+-blue?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-lightgrey?style=flat-square)
 
-扩展 Claude Code 能力的实用技能集合 · 文档处理 · 自动化工具
-
-__简体中文__ | [English](./README_EN.md)
+把可复用的 AI 工作流沉淀成开源 skill · 文档处理 · 社交发布 · 自动化工具
 
 ---
 </div>
 
 ## 项目简介
 
-**Frank's Claude Code Skills** 是一套专为 Claude Code 设计的技能扩展集合。这些技能可以让 Claude Code 执行特定的专业任务，如文档处理、文件操作、自动化工作流等。
+**Agent Skills** 是一套可复用的 AI Agent 技能库，用来沉淀日常工作中可以公开复用的流程、脚本和提示词。它不绑定某一个工具，可以被 Claude Code、Codex、Gemini CLI、Kimi、OpenClaw 等不同 Agent 环境参考或改造使用。
 
-每个技能都是独立模块，可按需安装和配置，让 Claude Code 变得更加强大和实用。
+每个技能都是独立模块，可按需安装、复制和改造。适合公开的通用能力会放在这里；涉及账号、公司资料、客户数据、密钥或本地私有路径的流程不放入本仓库。
 
 ## 🌟 可用技能
 
@@ -52,7 +50,7 @@ python3 skills/watermark/watermark.py -t "草稿" -d ./docs -o ./watermarked
 python3 skills/watermark/watermark.py -t "机密" -d ./docs --overwrite
 ```
 
-**Claude Code 中使用：**
+**Agent 中使用：**
 ```
 为这个 PDF 文件添加"机密文件"水印
 批量为 /documents 目录下的所有文件添加水印
@@ -110,7 +108,7 @@ python3 skills/x-post-crafter/x_post_card.py \
   --output ./codex-vs-claude-code.png
 ```
 
-**Claude Code 中使用：**
+**Agent 中使用：**
 ```
 帮我把这句话改成更利于传播的推文，并配图发到 X
 写一下 Codex 和 Claude Code 的区别，做一张对比图
@@ -120,7 +118,7 @@ python3 skills/x-post-crafter/x_post_card.py \
 
 ```mermaid
 graph LR
-    A[Claude Code] --> B[Skill Config]
+    A[AI Agent] --> B[Skill Config]
     B --> C[Python Script]
     C --> D[PyPDF2]
     C --> E[python-docx]
@@ -146,7 +144,7 @@ graph LR
 ## 📁 目录结构
 
 ```
-franks-claude-code-skills/
+agent-skills/
 ├── README.md              # 项目文档
 ├── skills/                # 技能目录
 │   ├── watermark/         # 水印技能
@@ -163,7 +161,7 @@ franks-claude-code-skills/
 ### 方式一：克隆仓库
 
 ```bash
-git clone https://github.com/frankfika/franks-claude-code-skills.git
+git clone https://github.com/frankfika/agent-skills.git
 ```
 
 ### 方式二：下载单个技能
@@ -195,6 +193,18 @@ trigger:
 ```
 
 3. **实现技能逻辑**：编写 Python 脚本处理具体任务
+
+## 🔓 开源原则
+
+适合放进本仓库的 skill：
+
+- 不包含账号、密钥、token 或 cookie
+- 不包含公司、客户、投融资、财务、法务等敏感资料
+- 不写死个人本地路径，或已用占位符替代
+- 方法论和脚本具有通用复用价值
+- 可以被他人复制后直接改造使用
+
+不适合开源的内容请保留在私有仓库或本地目录。
 
 ## 📝 开发指南
 
@@ -243,14 +253,15 @@ MIT License - 详见 [LICENSE](./LICENSE)
 ## 🙏 致谢
 
 - [Claude Code](https://claude.ai/) - Anthropic 的 AI 编程助手
+- [Codex](https://openai.com/codex/) - OpenAI 的 AI 编程助手
 - 所有开源库的维护者
 
 ---
 
 <div align="center">
 
-**让 Claude Code 更强大 🚀**
+**把好用的工作流沉淀成可复用的 skill 🚀**
 
-Copyright © 2024 Frank's Skills
+Copyright © 2026 Agent Skills
 
 </div>
