@@ -114,6 +114,23 @@ python3 skills/x-post-crafter/x_post_card.py \
 写一下 Codex 和 Claude Code 的区别，做一张对比图
 ```
 
+### 3. Expense Reimbursement - 报销材料整理助手
+
+整理报销发票、凭证、行程单和订单截图，按费用组分类归档，并生成报销明细、汇总和统计表。
+
+**功能特点：**
+- 递归扫描：支持 PDF、JPG、PNG、WEBP、BMP
+- 自动分类：打车票、火车飞机票、住宿费、餐费、其他
+- 发票去重：根据发票号码、金额、商户、日期识别重复发票
+- 凭证配对：把发票、订单、行程单放入同一费用组
+- 报表生成：输出 `报销明细.csv`、`报销汇总.md`、`报销统计.xlsx`
+
+**Agent 中使用：**
+```
+帮我整理这个文件夹里的报销发票，分类、去重，并生成报销汇总
+把这些打车票和发票配对整理成报销明细
+```
+
 ## 🛠️ 技术架构
 
 ```mermaid
@@ -150,9 +167,11 @@ agent-skills/
 │   ├── watermark/         # 水印技能
 │   │   ├── skill.yaml     # 技能配置（中文）
 │   │   └── watermark.py   # Python 实现
-│   └── x-post-crafter/    # X/Twitter 推文与配图技能
-│       ├── skill.yaml     # 技能配置（中文）
-│       └── x_post_card.py # 配图生成脚本
+│   ├── x-post-crafter/    # X/Twitter 推文与配图技能
+│   │   ├── skill.yaml     # 技能配置（中文）
+│   │   └── x_post_card.py # 配图生成脚本
+│   └── expense-reimbursement/ # 报销材料整理技能
+│       └── skill.yaml     # 技能配置（中文）
 └── .git/                  # Git 仓库
 ```
 
@@ -235,6 +254,8 @@ trigger:
 | 版权声明 | Watermark | 添加版权信息 |
 | 社交发布 | X Post Crafter | 优化推文并配图发布 |
 | 产品对比 | X Post Crafter | 生成工具差异对比图 |
+| 报销整理 | Expense Reimbursement | 分类发票并生成报销表 |
+| 发票去重 | Expense Reimbursement | 识别重复发票并排除汇总 |
 
 ## 🤝 贡献
 
