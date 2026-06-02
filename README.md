@@ -171,6 +171,7 @@ agent-skills/
 │   │   ├── skill.yaml     # 技能配置（中文）
 │   │   └── x_post_card.py # 配图生成脚本
 │   └── expense-reimbursement/ # 报销材料整理技能
+│       ├── SKILL.md       # Codex/Claude 风格技能说明
 │       └── skill.yaml     # 技能配置（中文）
 └── .git/                  # Git 仓库
 ```
