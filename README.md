@@ -148,6 +148,23 @@ python3 skills/expense-reimbursement/scripts/expense_reimbursement.py organize \
 python3 skills/expense-reimbursement/scripts/expense_reimbursement.py validate ./expense-demo/organized
 ```
 
+### 4. Polymarket Analysis - 预测市场题目分析助手
+
+分析 Polymarket 预测市场链接，提取题目、选项、赔率、结算规则、流动性和 UMA 争议风险，并结合事实依据判断哪个选项更可能获胜。
+
+**功能特点：**
+- 规则优先：先读市场如何结算，再判断现实事件概率
+- 成功兜底：网页、Gamma API、页面嵌入内容和权威外部来源多路径获取信息
+- 结算可信度：区分官方来源、可信报道共识、模糊规则和 UMA 争议风险
+- 流动性检查：提示低流动性、宽价差、集中持仓或临近结算造成的价格失真
+- 事实分析：优先使用公司公告、SEC 文件、官方模型文档、政府/监管来源和权威市场数据
+
+**Agent 中使用：**
+```
+帮我分析这个 Polymarket 链接哪个选项更可能赢：https://polymarket.com/event/...
+这个预测市场的结算规则可信吗？赔率有没有可能被流动性扭曲？
+```
+
 ## 🛠️ 技术架构
 
 ```mermaid
@@ -187,7 +204,7 @@ agent-skills/
 │   ├── x-post-crafter/    # X/Twitter 推文与配图技能
 │   │   ├── skill.yaml     # 技能配置（中文）
 │   │   └── x_post_card.py # 配图生成脚本
-│   └── expense-reimbursement/ # 报销材料整理技能
+│   ├── expense-reimbursement/ # 报销材料整理技能
 │       ├── SKILL.md       # Codex/Claude 风格技能说明
 │       ├── skill.yaml     # 技能配置（中文）
 │       ├── requirements.txt
@@ -197,6 +214,11 @@ agent-skills/
 │       │   └── manifest-schema.md
 │       └── assets/
 │           └── manifest_template.csv
+│   └── polymarket-analysis/ # Polymarket 预测市场分析技能
+│       ├── SKILL.md       # Codex/Claude 风格技能说明
+│       ├── skill.yaml     # 通用 Agent 技能配置
+│       └── agents/
+│           └── openai.yaml
 └── .git/                  # Git 仓库
 ```
 
@@ -281,6 +303,8 @@ trigger:
 | 产品对比 | X Post Crafter | 生成工具差异对比图 |
 | 报销整理 | Expense Reimbursement | 分类发票并生成报销表 |
 | 发票去重 | Expense Reimbursement | 识别重复发票并排除汇总 |
+| 预测市场分析 | Polymarket Analysis | 分析 Polymarket 链接哪个选项更可能赢 |
+| 结算规则审查 | Polymarket Analysis | 判断规则公信力、UMA 争议和流动性风险 |
 
 ## 🤝 贡献
 

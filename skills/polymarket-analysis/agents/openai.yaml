@@ -1,0 +1,7 @@
+interface:
+  display_name: "Polymarket Analysis"
+  short_description: "Analyze Polymarket odds with evidence"
+  default_prompt: "Use $polymarket-analysis to analyze this Polymarket link and tell me which outcome is more likely to win."
+
+policy:
+  allow_implicit_invocation: true
